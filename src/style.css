@@ -1,5 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f7fe;
 }
 
 h1 {
@@ -24,6 +25,7 @@ li:first-letter {
 .weather-app-wrapper {
   max-width: 600px;
   margin: 0 auto;
+  padding-top: 15px;
 }
 .weather-app {
   max-width: 600px;
@@ -31,6 +33,7 @@ li:first-letter {
   padding: 20px;
   border: 1px solid rgb(230, 184, 184);
   border-radius: 10px;
+  background-color: #fff;
 }
 .overview {
   margin-bottom: 20px;
@@ -49,4 +52,12 @@ li:first-letter {
 .weather-temperature .units {
   position: relative;
   top: -34px;
+}
+.btn {
+  background-color: #885df1;
+  border-color: transparent;
+}
+.btn:hover {
+  transition: (200ms, ease-in);
+  background-color: #7947f8;
 }

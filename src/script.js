@@ -35,9 +35,21 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
-
-let apiKey = "45be73f84a5b597b7603c48501d80624";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=ashdod&appid=${apiKey}
+function search(city) {
+  let apiKey = "45be73f84a5b597b7603c48501d80624";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 &units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+  console.log(cityInputElement.value);
+}
+
+search("Tel Aviv");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
