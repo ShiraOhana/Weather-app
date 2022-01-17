@@ -22,8 +22,6 @@ function formatDate(timestamp) {
 }
 
 function displayTemperature(response) {
-  console.log(response);
-  console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let cityElement = document.querySelector("#city");
@@ -41,6 +39,5 @@ function displayTemperature(response) {
 let apiKey = "45be73f84a5b597b7603c48501d80624";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=ashdod&appid=${apiKey}
 &units=metric`;
-console.log(apiUrl);
 
 axios.get(apiUrl).then(displayTemperature);
