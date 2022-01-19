@@ -1,3 +1,4 @@
+// Time and Date
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -21,6 +22,36 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-2">
+          <div class="weather-forecast-date">${day}</div>
+          <img
+            src="http://openweathermap.org/img/wn/50d@2x.png"
+            alt=""
+            width="42"
+          />
+          <div class="weather-forecast-temperatures">
+            <span class="weather-forecast-temperature-max"> 18° </span>
+            <span class="weather-forecast-temperature-min"> 12° </span>
+          </div>
+        </div>
+    `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+// Display current temperature using API
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -41,6 +72,8 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   celsiusTemperature = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 function search(city) {
   let apiKey = "45be73f84a5b597b7603c48501d80624";
@@ -55,7 +88,7 @@ function handleSubmit(event) {
   search(cityInputElement.value);
   console.log(cityInputElement.value);
 }
-
+// Unit convert
 function displayfahrenhitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -84,4 +117,6 @@ fahrenhitLink.addEventListener("click", displayfahrenhitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
+// Default search
 search("Tel Aviv");
+displayForecast();
