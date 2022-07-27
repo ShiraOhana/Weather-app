@@ -10,4 +10,4 @@
 [Weather website](https://www.shecodes.io/workshops/shecodes-plus-9afc31f1-ef0a-480b-87a8-a1f3edfa393e/projects/671636)
 
 ### Spoilers: 
-  ![Website screenshot](./Screenshot 2022-07-27 192604.png)
+  ![Website screenshot](./Screenshot.png)
